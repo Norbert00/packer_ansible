@@ -1,0 +1,6 @@
+- name: Get update and upgrade
+  package:
+    update_cache: yes
+    upgrade: yes
+- debug: 
+    msg: Has been updated and upgraded 

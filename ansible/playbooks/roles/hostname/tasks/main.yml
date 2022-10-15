@@ -1,0 +1,27 @@
+
+- name: debuging
+  debug:
+    msg: Hostname {{ item }}
+  loop: "{{ my_hostnames }}"
+  when: item == inventory_hostname 
+
+
+- name: Set hostname as Shell
+  shell: hostnamectl set-hostname {{ item }}
+  loop: "{{ my_hostnames }}"
+  when: item == inventory_hostname
+
+- name: Save hostname after reboot
+  shell: echo {{ static_hostname_after_restart }} >> {{ cloudcfg }}
+
+
+# - name: Set a hostname
+#   hostname:
+#     name: "{{ item }}"
+#   loop: "{{ my_hostnames }}"
+#   when: item == inventory_hostname
+  
+
+
+
+

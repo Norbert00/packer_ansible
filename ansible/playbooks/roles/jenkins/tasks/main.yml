@@ -1,0 +1,21 @@
+- name: Add Jenkins repository key
+  apt_key:
+    url: "{{ key_url }}"
+    state: present
+
+- name: Add Jenkins repository
+  apt_repository:
+    repo: "{{ repository_entry }}"
+    state: present
+
+- name: Install Jenkins
+  apt: 
+    name: jenkins
+    update_cache: yes
+    state: present
+
+- name: Start Jenkins
+  systemd:
+    name: jenkins
+    enabled: yes
+    state: started

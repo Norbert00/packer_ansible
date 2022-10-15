@@ -1,0 +1,20 @@
+users:
+  - name: "norbert"
+    group: "devops"
+    shell: "/bin/bash"
+    authorized: 
+      - n.pub
+  - name: "konrad"
+    shell: "/bin/sh"
+    group: "logs"
+    authorized: 
+      - k.pub
+  - name: "devops"
+    shell: "/bin/bash"
+    group: "devops"
+    authorized: 
+      - n.pub
+      - k.pub
+
+sudoers_group:
+  - group_name: "devops"

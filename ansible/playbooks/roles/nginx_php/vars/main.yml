@@ -1,0 +1,16 @@
+packages:
+    - nginx
+    - php7.4
+    - php7.4-fpm
+
+nginx_ports: 
+    - 80
+    - 81
+
+conf_file: "php_web.conf"
+
+sites_available: "/etc/nginx/sites-available"
+
+sites_enabled: "/etc/nginx/sites-enabled"
+
+www_default_path: "/var/www/html"

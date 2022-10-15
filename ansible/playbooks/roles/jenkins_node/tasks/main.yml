@@ -1,0 +1,4 @@
+- name: Jenkins working directory
+  file:
+    path: "{{ working_directory }}"
+    state: directory

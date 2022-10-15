@@ -1,0 +1,31 @@
+users:
+  - name: "norbert"
+    group: "devops"
+    shell: "/bin/bash"
+    authorized: 
+      - n.pub
+  - name: "konrad"
+    shell: "/bin/sh"
+    group: "logs"
+    authorized: 
+      - k.pub
+
+sudoers_group:
+  - group_name: "devops"
+
+
+packages:
+    - package: openjdk-11-jdk
+      state: present 
+    - package: python3-pip
+      state: present
+    - package: packer
+      state: present
+    - package: ansible
+      state: present
+
+packer_key:
+  - key: https://apt.releases.hashicorp.com/gpg
+    state: present
+
+packer_repository: apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"

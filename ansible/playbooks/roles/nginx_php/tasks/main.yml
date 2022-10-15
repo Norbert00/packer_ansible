@@ -1,0 +1,36 @@
+- name: Install nginx and php
+  package:
+      name: "{{ item }}"
+      state: latest
+  loop: "{{ packages }}"
+  notify: Restart nginx
+
+- name: Template nginx config
+  template:
+    src: "{{ conf_file }}.j2"
+    dest: "{{ sites_available }}/{{ conf_file }}"
+    owner: root
+    group: root
+
+- name: Copy index.php
+  copy:
+    src: index.php
+    dest: "{{ www_default_path }}" 
+    owner: root
+    group: root
+
+- name: Create a symbolic link
+  file:
+    src: "{{ sites_available }}/{{ conf_file }}"
+    dest: "{{ sites_enabled }}/{{ conf_file }}"
+    owner: root
+    group: root
+    state: link
+  notify: Restart nginx
+  
+- name: Remove a symbolic link
+  file:
+    path: "{{ sites_enabled }}/default"
+    state: absent
+  notify: Restart nginx 
+ 

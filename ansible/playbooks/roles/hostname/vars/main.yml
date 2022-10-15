@@ -1,0 +1,7 @@
+my_hostnames:
+  - nginx_php
+  - jenkins
+  - jenkins_node
+
+cloudcfg: /etc/cloud/cloud.cfg
+static_hostname_after_restart: "preserve_hostname: true"
