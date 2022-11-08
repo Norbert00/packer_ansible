@@ -1,27 +1,28 @@
 - hosts:
   - nginx_php
-  become: true
   roles:
     - update_hosts
     - add_user
-    - nginx_php
     - hostname
+    - nginx_php
+    
 
 - hosts:
   - jenkins
-  become: true
-  roles:
-    - update_hosts
-    - add_user
-    - jenkins
-    - hostname
-
-
-- hosts: jenkins_node
-  become: true
   roles:
     - update_hosts
     - add_user
     - hostname
     - install
+    - jenkins
+   
+
+
+- hosts: jenkins_node
+  roles:
+    - update_hosts
+    - add_user
+    - hostname
+    - install
+    - jenkins_node
 
