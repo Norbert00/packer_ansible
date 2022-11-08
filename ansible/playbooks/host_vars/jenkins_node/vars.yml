@@ -9,6 +9,11 @@ users:
     group: "logs"
     authorized: 
       - k.pub
+  - name: "jenkins"
+    shell: "/bin/bash"
+    group: "devops"
+    authorized: 
+      - jenkins.pub
 
 sudoers_group:
   - group_name: "devops"
@@ -16,13 +21,9 @@ sudoers_group:
 
 packages:
     - package: openjdk-11-jdk
-      state: present 
     - package: python3-pip
-      state: present
     - package: packer
-      state: present
     - package: ansible
-      state: present
 
 packer_key:
   - key: https://apt.releases.hashicorp.com/gpg

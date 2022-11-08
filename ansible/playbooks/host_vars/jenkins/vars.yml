@@ -1,7 +1,7 @@
 users:
   - name: "norbert"
-    group: "devops"
     shell: "/bin/bash"
+    group: "devops"
     authorized: 
       - n.pub
   - name: "konrad"
@@ -9,12 +9,18 @@ users:
     group: "logs"
     authorized: 
       - k.pub
+  - name: "jenkins"
+    shell: "/bin/bash"
+    group: "devops"
+    authorized: 
+      - jenkins.pub
 
 sudoers_group:
   - group_name: "devops"
 
-
 packages:
-  java: 
-      java: openjdk-11-jdk
-      state: present
+    - package: openjdk-11-jdk
+
+
+key_url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+repository_entry: "deb https://pkg.jenkins.io/debian-stable binary/"
