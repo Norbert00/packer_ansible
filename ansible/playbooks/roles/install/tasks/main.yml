@@ -3,15 +3,17 @@
     url: "{{ item.key }}"
     state: "{{ item.state }}"
   with_items: "{{ packer_key }}"
+  when: inventory_hostname == "jenkins_node"
 
 
 - name: Add Packer APT repository
   shell: "{{ packer_repository }}"
+  when: inventory_hostname == "jenkins_node"
 
 - name: Install dependencis java 11 pip3 packer and ansible
   apt: 
     name: "{{ item.package }}"
-    state: "{{ item.state }}"
+    state: present
   with_items: "{{ packages }}"
 
 
