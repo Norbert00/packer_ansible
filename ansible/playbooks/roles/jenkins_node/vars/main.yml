@@ -1,2 +1,5 @@
 working_directory: /var/jenkins
 jenkins_user: jenkins
+jenkins_owner: jenkins
+jenkins_group: "devops"
+

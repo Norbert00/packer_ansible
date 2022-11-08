@@ -1,4 +1,7 @@
 - name: Jenkins working directory
   file:
     path: "{{ working_directory }}"
+    owner: "{{ jenkins_owner }}"
+    group: "{{ jenkins_group }}"
     state: directory
+    mode: '0766'
